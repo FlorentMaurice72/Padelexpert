@@ -1,0 +1,4 @@
+@import "tailwindcss";
+
+/* Typography plugin for article prose rendering */
+@plugin "@tailwindcss/typography";
