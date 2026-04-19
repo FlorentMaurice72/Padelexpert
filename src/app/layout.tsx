@@ -7,17 +7,17 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'], display: 'swap' });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://padelexpert.fr'),
+  metadataBase: new URL('https://prepadel.fr'),
   title: {
-    default: 'PadelExpert — Guides et conseils pour débutants',
-    template: '%s | PadelExpert',
+    default: 'PrePadel — Le hub de progression padel pour débutants',
+    template: '%s | PrePadel',
   },
   description:
-    'Guides, comparatifs et conseils pour les joueurs de padel débutants. Choisissez le bon matériel et progressez rapidement.',
+    'Apprendre le padel, choisir son matériel, progresser rapidement. Guides, comparatifs et conseils honnêtes pour débutants.',
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
-    siteName: 'PadelExpert',
+    siteName: 'PrePadel',
     images: [{ url: '/images/og-default.jpg', width: 1200, height: 630 }],
   },
   twitter: {

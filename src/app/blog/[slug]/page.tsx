@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: article.description,
       type: 'article',
       publishedTime: article.date,
-      url: `https://padelexpert.fr/blog/${slug}`,
+      url: `https://prepadel.fr/blog/${slug}`,
     },
   };
 }

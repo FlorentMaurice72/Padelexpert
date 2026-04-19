@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 import { getAllSlugs } from '@/lib/mdx';
 
-const BASE_URL = 'https://padelexpert.fr';
+const BASE_URL = 'https://prepadel.fr';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const slugs = getAllSlugs();
