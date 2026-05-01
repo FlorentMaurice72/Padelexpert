@@ -1,10 +1,21 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { DM_Serif_Display, DM_Sans } from 'next/font/google';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'], display: 'swap' });
+const dmSerifDisplay = DM_Serif_Display({
+  subsets: ['latin'],
+  weight: '400',
+  display: 'swap',
+  variable: '--font-dm-serif',
+});
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-dm-sans',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://prepadel.fr'),
@@ -31,8 +42,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className={inter.className}>
-      <body className="bg-gray-50 text-gray-900 antialiased">
+    <html lang="fr" className={`${dmSerifDisplay.variable} ${dmSans.variable}`}>
+      <body className="bg-[#faf9f6] text-gray-900 antialiased">
         <Header />
         <main>{children}</main>
         <Footer />

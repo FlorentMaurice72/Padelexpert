@@ -18,23 +18,17 @@ export const metadata: Metadata = {
 const pillars = [
   {
     number: '01',
-    icon: '📖',
     title: 'Apprendre',
     subtitle: 'Les bases solides pour débuter correctement',
     links: [
-      { label: 'Règles du padel expliquées', href: '/guides' },
-      { label: 'Comment débuter le padel', href: '/guides' },
-      { label: 'Tous les guides débutants', href: '/guides' },
+      { label: 'Règles du padel expliquées', href: '/blog/regles-padel-simples' },
+      { label: 'Comment débuter le padel', href: '/blog/comment-jouer-padel-debutant' },
+      { label: 'Les erreurs des débutants', href: '/blog/erreurs-debutant-padel' },
     ],
     cta: { label: 'Voir les guides', href: '/guides' },
-    color: 'from-blue-50 to-blue-100',
-    border: 'border-blue-200',
-    badge: 'bg-blue-100 text-blue-700',
-    ctaClass: 'bg-blue-600 hover:bg-blue-700 text-white',
   },
   {
     number: '02',
-    icon: '🎾',
     title: 'Choisir son matériel',
     subtitle: 'La bonne raquette, les bonnes chaussures, le bon budget',
     links: [
@@ -43,68 +37,102 @@ const pillars = [
       { label: 'Chaussures padel débutant', href: '/blog/chaussures-padel-debutant-guide' },
     ],
     cta: { label: 'Voir les comparatifs', href: '/comparatifs' },
-    color: 'from-emerald-50 to-emerald-100',
-    border: 'border-emerald-200',
-    badge: 'bg-emerald-100 text-emerald-700',
-    ctaClass: 'bg-emerald-600 hover:bg-emerald-700 text-white',
   },
   {
     number: '03',
-    icon: '📈',
     title: 'Progresser',
     subtitle: 'Techniques, entraînement et stratégie de jeu',
     links: [
-      { label: 'Techniques de base au padel', href: '/guides' },
-      { label: 'Erreurs fréquentes des débutants', href: '/blog' },
-      { label: 'Tous les conseils terrain', href: '/blog' },
+      { label: 'Positions au padel', href: '/blog/positions-padel-debutant' },
+      { label: 'Tactique padel débutant', href: '/blog/tactique-padel-debutant' },
+      { label: 'Comment progresser vite', href: '/blog/progresser-padel-rapidement' },
     ],
     cta: { label: 'Voir les articles', href: '/blog' },
-    color: 'from-purple-50 to-purple-100',
-    border: 'border-purple-200',
-    badge: 'bg-purple-100 text-purple-700',
-    ctaClass: 'bg-purple-600 hover:bg-purple-700 text-white',
   },
 ];
 
 export default function HomePage() {
-  const latestArticles = getAllArticles().slice(0, 3);
+  const allArticles = getAllArticles();
+  const featuredArticle = allArticles[0];
+  const latestArticles = allArticles.slice(1, 4);
 
   return (
     <>
       {/* ── Hero ── */}
-      <section className="bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-900 text-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 text-center">
-          <span className="inline-block bg-white/20 text-white text-sm font-semibold px-4 py-1.5 rounded-full mb-6 tracking-wide uppercase">
-            Hub de progression padel
-          </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 tracking-tight">
-            Apprendre. Choisir.<br className="hidden md:block" /> Progresser.
-          </h1>
-          <p className="text-lg md:text-xl text-emerald-100 max-w-2xl mx-auto mb-10">
-            PrePadel est le guide de référence pour les joueurs débutants. Guides pratiques, comparatifs honnêtes
-            et conseils terrain — tout ce qu&apos;il faut pour bien démarrer et progresser vite.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/guides"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-emerald-700 font-bold rounded-lg hover:bg-emerald-50 transition-colors text-sm"
-            >
-              Commencer par les guides →
-            </Link>
-            <Link
-              href="/comparatifs"
-              className="text-sm font-medium text-emerald-100 hover:text-white underline underline-offset-4"
-            >
-              Comparer le matériel
-            </Link>
+      <section className="bg-[#faf9f6] border-b border-gray-200">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+          <div className="grid md:grid-cols-[1fr_380px] gap-12 items-center">
+            {/* Left: editorial headline */}
+            <div>
+              <span className="text-xs font-semibold uppercase tracking-widest text-emerald-600 mb-5 block">
+                Guide padel débutant
+              </span>
+              <h1 className="font-serif text-5xl md:text-6xl text-gray-900 leading-tight mb-6">
+                Apprendre.<br />
+                Choisir.<br />
+                Progresser.
+              </h1>
+              <p className="text-lg text-gray-600 mb-8 max-w-lg leading-relaxed">
+                PrePadel est le guide de référence pour les joueurs débutants — guides pratiques,
+                comparatifs honnêtes et conseils terrain pour bien démarrer et progresser vite.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  href="/guides"
+                  className="px-6 py-3 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition-colors text-sm"
+                >
+                  Commencer par les guides →
+                </Link>
+                <Link
+                  href="/comparatifs"
+                  className="px-6 py-3 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:border-gray-400 hover:bg-white transition-colors text-sm"
+                >
+                  Comparer le matériel
+                </Link>
+              </div>
+            </div>
+
+            {/* Right: featured article card */}
+            {featuredArticle && (
+              <div className="hidden md:block">
+                <Link href={`/blog/${featuredArticle.slug}`} className="group block bg-white rounded-2xl border border-gray-200 overflow-hidden hover:border-gray-300 transition-colors">
+                  <div className="bg-gray-100 aspect-[16/9]" />
+                  <div className="p-6">
+                    <span className="text-xs font-semibold uppercase tracking-widest text-emerald-600 mb-3 block">
+                      À la une
+                    </span>
+                    <h2 className="font-serif text-xl text-gray-900 group-hover:text-emerald-700 transition-colors leading-snug mb-2">
+                      {featuredArticle.title}
+                    </h2>
+                    <p className="text-sm text-gray-500 line-clamp-2">{featuredArticle.description}</p>
+                  </div>
+                </Link>
+              </div>
+            )}
+          </div>
+
+          {/* Stats row */}
+          <div className="mt-16 pt-8 border-t border-gray-200 grid grid-cols-3 gap-8 text-center">
+            <div>
+              <div className="font-serif text-3xl text-gray-900">27+</div>
+              <div className="text-xs text-gray-500 mt-1 uppercase tracking-wide">Articles & guides</div>
+            </div>
+            <div>
+              <div className="font-serif text-3xl text-gray-900">3</div>
+              <div className="text-xs text-gray-500 mt-1 uppercase tracking-wide">Axes de progression</div>
+            </div>
+            <div>
+              <div className="font-serif text-3xl text-gray-900">100%</div>
+              <div className="text-xs text-gray-500 mt-1 uppercase tracking-wide">Conseils terrain</div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── 3 Piliers stratégiques ── */}
+      {/* ── 3 Piliers — grille à bordures ── */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-12">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-3">
+          <h2 className="font-serif text-3xl md:text-4xl text-gray-900 mb-3">
             Tout ce qu&apos;il faut pour débuter le padel
           </h2>
           <p className="text-gray-500 max-w-xl mx-auto text-sm md:text-base">
@@ -112,29 +140,23 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 border border-gray-200 rounded-2xl overflow-hidden divide-y md:divide-y-0 md:divide-x divide-gray-200">
           {pillars.map((pillar) => (
-            <div
-              key={pillar.number}
-              className={`bg-gradient-to-b ${pillar.color} rounded-2xl border ${pillar.border} p-7 flex flex-col`}
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${pillar.badge}`}>
-                  {pillar.number}
-                </span>
-                <span className="text-2xl">{pillar.icon}</span>
-              </div>
-              <h3 className="text-xl font-extrabold text-gray-900 mb-1">{pillar.title}</h3>
-              <p className="text-sm text-gray-600 mb-5">{pillar.subtitle}</p>
+            <div key={pillar.number} className="bg-[#faf9f6] p-8 flex flex-col">
+              <span className="text-xs font-bold text-gray-400 tracking-widest uppercase mb-5">
+                {pillar.number}
+              </span>
+              <h3 className="font-serif text-2xl text-gray-900 mb-2">{pillar.title}</h3>
+              <p className="text-sm text-gray-500 mb-6">{pillar.subtitle}</p>
 
-              <ul className="space-y-2 mb-6 flex-1">
+              <ul className="space-y-3 flex-1 mb-7">
                 {pillar.links.map((link) => (
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-sm text-gray-700 hover:text-gray-900 hover:underline flex items-center gap-1.5"
+                      className="text-sm text-gray-600 hover:text-emerald-600 transition-colors flex items-center gap-2"
                     >
-                      <span className="text-gray-400">›</span>
+                      <span className="text-gray-300">→</span>
                       {link.label}
                     </Link>
                   </li>
@@ -143,9 +165,9 @@ export default function HomePage() {
 
               <Link
                 href={pillar.cta.href}
-                className={`inline-flex items-center justify-center px-4 py-2.5 rounded-lg text-sm font-semibold transition-colors ${pillar.ctaClass}`}
+                className="text-sm font-semibold text-emerald-600 hover:text-emerald-700 transition-colors"
               >
-                {pillar.cta.label}
+                {pillar.cta.label} →
               </Link>
             </div>
           ))}
@@ -154,13 +176,13 @@ export default function HomePage() {
 
       {/* ── Derniers articles ── */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-bold text-gray-900">Derniers articles</h2>
+        <div className="flex items-baseline justify-between mb-10">
+          <h2 className="font-serif text-2xl md:text-3xl text-gray-900">Derniers articles</h2>
           <Link href="/blog" className="text-sm font-medium text-emerald-600 hover:underline">
             Voir tout →
           </Link>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {latestArticles.map((article) => (
             <ArticleCard key={article.slug} article={article} />
           ))}
@@ -170,16 +192,17 @@ export default function HomePage() {
       {/* ── Bandeau CTA final ── */}
       <section className="bg-gray-900 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-          <h2 className="text-2xl md:text-3xl font-extrabold mb-4">
-            Prêt à commencer le padel ?
+          <h2 className="font-serif text-3xl md:text-4xl mb-4">
+            Prêt à commencer le padel&nbsp;?
           </h2>
-          <p className="text-gray-400 mb-8 max-w-xl mx-auto">
-            Commencez par notre guide complet : quelle raquette choisir, quelles chaussures, et comment progresser dès la première semaine.
+          <p className="text-gray-400 mb-8 max-w-xl mx-auto text-sm leading-relaxed">
+            Commencez par notre guide complet : quelle raquette choisir, quelles chaussures,
+            et comment progresser dès la première semaine.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/blog/meilleure-raquette-padel-debutant"
-              className="inline-flex items-center px-6 py-3 bg-emerald-500 text-white font-bold rounded-lg hover:bg-emerald-600 transition-colors text-sm"
+              className="inline-flex items-center px-6 py-3 bg-emerald-500 text-white font-semibold rounded-lg hover:bg-emerald-600 transition-colors text-sm"
             >
               Choisir ma première raquette →
             </Link>

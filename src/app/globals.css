@@ -2,3 +2,12 @@
 
 /* Typography plugin for article prose rendering */
 @plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: var(--font-dm-sans), system-ui, -apple-system, sans-serif;
+  --font-serif: var(--font-dm-serif), Georgia, "Times New Roman", serif;
+}
+
+body {
+  background-color: #faf9f6;
+}
